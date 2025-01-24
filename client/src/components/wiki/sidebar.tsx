@@ -18,10 +18,10 @@ export function Sidebar() {
         <ScrollArea className="h-[calc(100vh-8rem)]">
           <nav className="space-y-1">
             {articles?.map((article) => (
-              <Link key={article.id} href={`/article${article.path}`}>
+              <Link key={article.id} href={article.path}>
                 <a
                   className={`block px-3 py-2 text-sm rounded-md transition-colors ${
-                    location === `/article${article.path}`
+                    location === article.path
                       ? "bg-blue-50 text-blue-900"
                       : "hover:bg-gray-50"
                   }`}
