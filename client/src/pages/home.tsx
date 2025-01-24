@@ -43,7 +43,7 @@ export default function Home() {
                   ))
                 ) : (
                   sections?.map((section) => (
-                    <Link key={section.id} href={`/article${section.path}`}>
+                    <Link key={section.id} href={section.path}>
                       <a className="block p-3 rounded-md hover:bg-blue-50 transition-colors">
                         <h3 className="font-medium text-[#102954]">
                           {section.title}
