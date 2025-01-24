@@ -39,13 +39,21 @@ export function registerRoutes(app: Express): Server {
   // Get a single article by path
   app.get("/api/articles/:path(*)", async (req, res) => {
     try {
+      // Log the requested path for debugging
+      console.log("Requested article path:", req.params.path);
+
+      // Ensure path starts with a forward slash
+      const path = req.params.path.startsWith("/") ? req.params.path : `/${req.params.path}`;
+      console.log("Normalized path:", path);
+
       const [article] = await db
         .select()
         .from(articles)
-        .where(eq(articles.path, req.params.path))
+        .where(eq(articles.path, path))
         .limit(1);
 
       if (!article) {
+        console.log("Article not found for path:", path);
         return res.status(404).send("Article not found");
       }
 
@@ -72,10 +80,11 @@ export function registerRoutes(app: Express): Server {
     }
 
     try {
+      const path = req.params.path.startsWith("/") ? req.params.path : `/${req.params.path}`;
       const [article] = await db
         .select()
         .from(articles)
-        .where(eq(articles.path, req.params.path))
+        .where(eq(articles.path, path))
         .limit(1);
 
       if (!article) {

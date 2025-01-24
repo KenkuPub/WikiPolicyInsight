@@ -14,6 +14,7 @@ export default function ArticlePage() {
   const { user } = useUser();
   const [isEditing, setIsEditing] = useState(false);
 
+  // Use location directly since our paths in DB already include the leading slash
   const { data: article, isLoading } = useQuery<Article>({
     queryKey: [`/api/articles${location}`],
   });
@@ -32,11 +33,22 @@ export default function ArticlePage() {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"/>
+      </div>
+    );
   }
 
   if (!article) {
-    return <div>Article not found</div>;
+    return (
+      <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white flex items-center justify-center">
+        <div className="bg-white p-6 rounded-lg shadow-sm max-w-md w-full text-center">
+          <h2 className="text-2xl font-serif font-bold text-[#102954] mb-4">Article Not Found</h2>
+          <p className="text-gray-600">The requested article could not be found.</p>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -80,7 +92,7 @@ export default function ArticlePage() {
             ) : (
               <div className="prose max-w-none">
                 {article.content.split('\n').map((paragraph, i) => (
-                  <p key={i}>{paragraph}</p>
+                  paragraph ? <p key={i}>{paragraph}</p> : <br key={i} />
                 ))}
               </div>
             )}
