@@ -19,15 +19,15 @@ export function Sidebar() {
           <nav className="space-y-1">
             {articles?.map((article) => (
               <Link key={article.id} href={article.path}>
-                <a
-                  className={`block px-3 py-2 text-sm rounded-md transition-colors ${
+                <div
+                  className={`block px-3 py-2 text-sm rounded-md transition-colors cursor-pointer ${
                     location === article.path
                       ? "bg-blue-50 text-blue-900"
                       : "hover:bg-gray-50"
                   }`}
                 >
                   {article.title}
-                </a>
+                </div>
               </Link>
             ))}
           </nav>

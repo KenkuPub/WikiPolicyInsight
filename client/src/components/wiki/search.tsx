@@ -26,10 +26,10 @@ export function Search() {
             {results?.map((result) => (
               <CommandItem key={result.id}>
                 <Link href={result.path}>
-                  <a className="block p-2 hover:bg-gray-50">
+                  <div className="block p-2 hover:bg-gray-50">
                     <div className="font-medium">{result.title}</div>
                     <div className="text-sm text-gray-600">{result.excerpt}</div>
-                  </a>
+                  </div>
                 </Link>
               </CommandItem>
             ))}

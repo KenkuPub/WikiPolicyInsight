@@ -1,0 +1,25 @@
+Warning: validateDOMNesting(...): <a> cannot appear as a descendant of &lt;a&gt;.
+    at a
+    at a
+    at https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=fed52d81:205:18
+    at nav
+    at div
+    at div
+    at https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-RDHMCQ3E.js?v=fed52d81:41:13
+    at https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-scroll-area.js?v=fed52d81:120:13
+    at div
+    at https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-RDHMCQ3E.js?v=fed52d81:41:13
+    at Provider (https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/chunk-P2QJ3BQC.js?v=fed52d81:173:15)
+    at https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-scroll-area.js?v=fed52d81:58:7
+    at _c (https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/src/components/ui/scroll-area.tsx:21:11)
+    at div
+    at aside
+    at Sidebar (https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/src/components/wiki/sidebar.tsx:23:22)
+    at div
+    at div
+    at Home (https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/src/pages/home.tsx:25:41)
+    at Route (https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=fed52d81:191:16)
+    at Switch (https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=fed52d81:247:17)
+    at Router (https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/src/App.tsx?v=gfNO-t-gwsvVEVWGPsPA0:30:31)
+    at QueryClientProvider (https://e4206092-1eb0-4675-ba73-e2addbb51251-00-3s12fa13fb71w.kirk.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=fed52d81:2805:3)
+    at App
