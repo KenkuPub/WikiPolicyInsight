@@ -7,20 +7,20 @@ interface BreadcrumbNavProps {
 
 export function BreadcrumbNav({ path }: BreadcrumbNavProps) {
   const segments = path.split("/").filter(Boolean);
-  
+
   return (
     <nav className="flex items-center space-x-2 mb-6 text-sm">
       <Link href="/">
-        <a className="text-blue-900 hover:text-blue-700">Home</a>
+        <div className="text-blue-900 hover:text-blue-700 cursor-pointer">Home</div>
       </Link>
-      
+
       {segments.map((segment, i) => (
         <div key={i} className="flex items-center space-x-2">
           <ChevronRight className="h-4 w-4 text-gray-400" />
-          <Link href={`/article/${segments.slice(0, i + 1).join("/")}`}>
-            <a className="text-blue-900 hover:text-blue-700 capitalize">
+          <Link href={`/${segments.slice(0, i + 1).join("/")}`}>
+            <div className="text-blue-900 hover:text-blue-700 cursor-pointer capitalize">
               {segment.replace(/-/g, " ")}
-            </a>
+            </div>
           </Link>
         </div>
       ))}
