@@ -2,11 +2,19 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { setupAuth } from "./auth";
 import { db } from "@db";
-import { articles, revisions } from "@db/schema";
-import { eq, or, ilike } from "drizzle-orm";
+import { articles, revisions, sections } from "@db/schema";
+import { eq, or, ilike, asc } from "drizzle-orm";
 
 export function registerRoutes(app: Express): Server {
   setupAuth(app);
+
+  app.get("/api/sections", async (_req, res) => {
+    const results = await db
+      .select()
+      .from(sections)
+      .orderBy(asc(sections.order_index));
+    res.json(results);
+  });
 
   app.get("/api/articles", async (req, res) => {
     const results = await db

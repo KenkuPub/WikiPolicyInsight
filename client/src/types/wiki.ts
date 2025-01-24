@@ -6,6 +6,10 @@ export interface Article {
   createdAt: string;
   updatedAt: string;
   authorId: number;
+  sentimentScore: number;
+  constitutionalityScore: number;
+  legalRiskScore: number;
+  implementationRiskScore: number;
 }
 
 export interface Revision {
@@ -21,4 +25,11 @@ export interface SearchResult {
   title: string;
   path: string;
   excerpt: string;
+}
+
+export interface ScoreCardProps {
+  sentimentScore: number;
+  constitutionalityScore: number;
+  legalRiskScore: number;
+  implementationRiskScore: number;
 }

@@ -5,56 +5,60 @@ import { Link } from "wouter";
 import { Search } from "@/components/wiki/search";
 import { Sidebar } from "@/components/wiki/sidebar";
 import type { Article } from "@/types/wiki";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export default function Home() {
-  const { data: articles, isLoading } = useQuery<Article[]>({
-    queryKey: ["/api/articles"],
+  const { data: sections, isLoading } = useQuery<Article[]>({
+    queryKey: ["/api/sections"],
   });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4 py-8 flex gap-6">
         <Sidebar />
-        
+
         <main className="flex-1">
           <div className="mb-8">
             <h1 className="text-4xl font-serif font-bold text-[#102954] mb-4">
               Executive Orders Analysis Wiki
             </h1>
+            <p className="text-gray-600 mb-6">
+              A comprehensive analysis of Executive Orders, their constitutional implications,
+              and legal considerations.
+            </p>
             <Search />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {isLoading ? (
-              Array(6).fill(0).map((_, i) => (
-                <Card key={i} className="animate-pulse">
-                  <CardHeader>
-                    <div className="h-6 bg-gray-200 rounded w-3/4"></div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="h-4 bg-gray-100 rounded mb-2"></div>
-                    <div className="h-4 bg-gray-100 rounded w-2/3"></div>
-                  </CardContent>
-                </Card>
-              ))
-            ) : (
-              articles?.map((article) => (
-                <Link key={article.id} href={`/article${article.path}`}>
-                  <a className="block">
-                    <Card className="hover:shadow-lg transition-shadow">
-                      <CardHeader>
-                        <CardTitle className="font-serif">{article.title}</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-sm text-gray-600 line-clamp-3">
-                          {article.content.substring(0, 150)}...
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </a>
-                </Link>
-              ))
-            )}
+          <div className="bg-white rounded-lg shadow-sm p-6">
+            <h2 className="text-2xl font-serif font-semibold text-[#102954] mb-6">
+              Table of Contents
+            </h2>
+            <ScrollArea className="h-[calc(100vh-20rem)]">
+              <div className="grid gap-4">
+                {isLoading ? (
+                  Array(10).fill(0).map((_, i) => (
+                    <div key={i} className="animate-pulse">
+                      <div className="h-6 bg-gray-100 rounded w-3/4"></div>
+                    </div>
+                  ))
+                ) : (
+                  sections?.map((section) => (
+                    <Link key={section.id} href={`/article${section.path}`}>
+                      <a className="block p-3 rounded-md hover:bg-blue-50 transition-colors">
+                        <h3 className="font-medium text-[#102954]">
+                          {section.title}
+                        </h3>
+                        {section.content && (
+                          <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                            {section.content.substring(0, 150)}...
+                          </p>
+                        )}
+                      </a>
+                    </Link>
+                  ))
+                )}
+              </div>
+            </ScrollArea>
           </div>
         </main>
       </div>
