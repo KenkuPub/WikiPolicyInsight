@@ -44,7 +44,7 @@ export default function Home() {
                 ) : (
                   sections?.map((section) => (
                     <Link key={section.id} href={section.path}>
-                      <a className="block p-3 rounded-md hover:bg-blue-50 transition-colors">
+                      <div className="block p-3 rounded-md hover:bg-blue-50 transition-colors cursor-pointer">
                         <h3 className="font-medium text-[#102954]">
                           {section.title}
                         </h3>
@@ -53,7 +53,7 @@ export default function Home() {
                             {section.content.substring(0, 150)}...
                           </p>
                         )}
-                      </a>
+                      </div>
                     </Link>
                   ))
                 )}
